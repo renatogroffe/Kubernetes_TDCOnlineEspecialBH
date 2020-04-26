@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contagem-tdc-deployment
+  labels:
+    app: contagem-tdc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contagem-tdc
+  template:
+    metadata:
+      labels:
+        app: contagem-tdc
+    spec:
+      containers:
+      - name: contagem-tdc
+        image: luizcarlosfaria/contagemtdc:latest
+        env:
+          - name: groffe
+            value: Utilizando o Azure Kubernetes Service (AKS) durante o TDC
+        ports:
+        - containerPort: 80
